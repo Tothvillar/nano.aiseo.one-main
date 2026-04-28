@@ -408,8 +408,8 @@ const ImageGenerator: React.FC = () => {
                                     onChange={(e) => setModel(e.target.value)}
                                     className="px-2 py-1 text-xs rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-yellow-500"
                                 >
-                                    <option value="nano-banana">%gpt=image-2</option>
-                                    <option value="nano-banana-hd">%gpt=image-2-all</option>
+                                    <option value="nano-banana">gpt=image-2</option>
+                                    <option value="nano-banana-hd">gpt=image-2-all</option>
                                 </select>
                             </div>
                         </div>
