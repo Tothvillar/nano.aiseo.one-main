@@ -62,7 +62,7 @@ const ImageGenerator: React.FC = () => {
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
     const [uploadedImagePreview, setUploadedImagePreview] = useState<string | null>(null);
     const [aspectRatio, setAspectRatio] = useState('4:3'); // 默认选中第一个选项
-    const [model, setModel] = useState('gpt-image-2'); // 默认选择gpt-image-2模型
+    const [model, setModel] = useState('nano-banana'); // 默认选择nano-banana模型
     const [xKey, setXKey] = useState('');
     const [isValidKey, setIsValidKey] = useState(false);
     const [showHelpTooltip, setShowHelpTooltip] = useState(false);
@@ -408,115 +408,134 @@ const ImageGenerator: React.FC = () => {
                                     onChange={(e) => setModel(e.target.value)}
                                     className="px-2 py-1 text-xs rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-yellow-500"
                                 >
-                                    <option value="gpt-image-2">gpt-image-2</option>
-                                    alt="生成的图片"
-                                    className="w-full"
-                            />
+                                    <option value="nano-banana">nano-banana</option>
+                                    <option value="nano-banana-hd">nano-banana-hd</option>
+                                </select>
                             </div>
-                            <button
-                                onClick={() => window.open(imageUrl, '_blank')}
-                                className="mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                            >
-                                查看原图
-                            </button>
                         </div>
-                        ) : (
-                        <div></div>
-                )}
                     </div>
-                    <section id="case" className="mt-16 border-t border-gray-100 dark:border-gray-800 pt-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Go Banana!</h2>
-                        <div className="prose prose-lg dark:prose-invert max-w-none">
-                            <p className="mb-4">
-                                准备好了吗？选择一个案例效果开始你的魔法吧。
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
-                            {useCaseData.cases.map((caseItem, index) => (
-                                <UserCase
-                                    key={index}
-                                    image={ossHost + caseItem.image}
-                                    originalImage={ossHost + caseItem.originalImage}
-                                    title={caseItem.title}
-                                    desc={caseItem.desc}
-                                    prompt={caseItem.prompt}
-                                />
-                            ))}
-                        </div>
-                        <div className="mt-8">
-                            <p className="mb-2 text-center">
-                                <a target="_blank" href="https://github.com/PicoTrex/Awesome-Nano-Banana-images">[更多玩法]</a>
-                            </p>
-                        </div>
-                    </section>
-                    <section id="pricing" className="mt-16 border-t border-gray-100 dark:border-gray-800 pt-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">价格说明</h2>
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">nano-banana</h3>
-                                <div className="text-3xl font-bold text-yellow-500 mb-4">￥0.12 <span className="text-sm text-gray-500 dark:text-gray-400">每次</span></div>
-                                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                                    <li className="flex items-center">
-                                        <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                                        </svg>
-                                        标准图像质量
-                                    </li>
-                                    <li className="flex items-center">
-                                        <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                                        </svg>
-                                        适合一般用途
-                                    </li>
-                                    <li className="flex items-center">
-                                        <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                                        </svg>
-                                        经济实惠
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right">
-                                    高清版
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">gpt-image-2</h3>
-                                <div className="text-3xl font-bold text-yellow-500 mb-4">￥0.18 <span className="text-sm text-gray-500 dark:text-gray-400">每次</span></div>
-                                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                                    <li className="flex items-center">
-                                        <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                                        </svg>
-                                        4K高清大图
-                                    </li>
-                                    <li className="flex items-center">
-                                        <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                                        </svg>
-                                        更高的细节和清晰度
-                                    </li>
-                                    <li className="flex items-center">
-                                        <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                                        </svg>
-                                        适合专业用途和打印
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="stament" className="mt-16 border-t border-gray-100 dark:border-gray-800 pt-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">使用说明</h2>
-                        <div className="prose prose-lg dark:prose-invert max-w-none">
-                            <p className="mb-4">
-                                使用gpt-image-2，由于高清图片比较大，8-10MB，生成时会有点慢，请耐心等待生成图片的显示，也可点击[查看原图]直接获取图片地址。
-                            </p>
-                        </div>
-                    </section>image-
-
                 </div>
-                );
+            </form>
+
+            <div className="mt-8">
+                {isLoading ? (
+                    <div className="flex justify-center items-center h-64 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-500"></div>
+                    </div>
+                ) : imageUrl ? (
+                    <div className="flex flex-col items-center">
+                        <div className="relative w-full rounded-lg overflow-hidden shadow-lg">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src={imageUrl}
+                                alt="生成的图片"
+                                className="w-full"
+                            />
+                        </div>
+                        <button
+                            onClick={() => window.open(imageUrl, '_blank')}
+                            className="mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                        >
+                            查看原图
+                        </button>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
+            </div>
+            <section id="case" className="mt-16 border-t border-gray-100 dark:border-gray-800 pt-12">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Go Banana!</h2>
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                    <p className="mb-4">
+                        准备好了吗？选择一个案例效果开始你的魔法吧。
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
+                    {useCaseData.cases.map((caseItem, index) => (
+                        <UserCase
+                            key={index}
+                            image={ossHost + caseItem.image}
+                            originalImage={ossHost + caseItem.originalImage}
+                            title={caseItem.title}
+                            desc={caseItem.desc}
+                            prompt={caseItem.prompt}
+                        />
+                    ))}
+                </div>
+                <div className="mt-8">
+                    <p className="mb-2 text-center">
+                        <a target="_blank" href="https://github.com/PicoTrex/Awesome-Nano-Banana-images">[更多玩法]</a>
+                    </p>
+                </div>
+            </section>
+            <section id="pricing" className="mt-16 border-t border-gray-100 dark:border-gray-800 pt-12">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">价格说明</h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">nano-banana</h3>
+                        <div className="text-3xl font-bold text-yellow-500 mb-4">￥0.12 <span className="text-sm text-gray-500 dark:text-gray-400">每次</span></div>
+                        <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                            <li className="flex items-center">
+                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                                </svg>
+                                标准图像质量
+                            </li>
+                            <li className="flex items-center">
+                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                                </svg>
+                                适合一般用途
+                            </li>
+                            <li className="flex items-center">
+                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                                </svg>
+                                经济实惠
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right">
+                            高清版
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">nano-banana-hd</h3>
+                        <div className="text-3xl font-bold text-yellow-500 mb-4">￥0.18 <span className="text-sm text-gray-500 dark:text-gray-400">每次</span></div>
+                        <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                            <li className="flex items-center">
+                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                                </svg>
+                                4K高清大图
+                            </li>
+                            <li className="flex items-center">
+                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                                </svg>
+                                更高的细节和清晰度
+                            </li>
+                            <li className="flex items-center">
+                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                                </svg>
+                                适合专业用途和打印
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="stament" className="mt-16 border-t border-gray-100 dark:border-gray-800 pt-12">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">使用说明</h2>
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                    <p className="mb-4">
+                        使用nano-banana-hd，由于高清图片比较大，8-10MB，生成时会有点慢，请耐心等待生成图片的显示，也可点击[查看原图]直接获取图片地址。
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    );
 };
 
-                export default ImageGenerator;
+export default ImageGenerator;
