@@ -31,7 +31,7 @@ const apiClient = axios.create({
 });
 
 // 文生图的接口
-export const generateImage = async (prompt: string, aspect_ratio: string = "4:3", model: string = "gpt=image-2"): Promise<string> => {
+export const generateImage = async (prompt: string, aspect_ratio: string = "4:3", model: string = "nano-banana"): Promise<string> => {
   try {
     const response = await apiClient.post('/images/generations', {
       model,
@@ -46,14 +46,14 @@ export const generateImage = async (prompt: string, aspect_ratio: string = "4:3"
   }
 };
 // 图生图的接口
-export const editImage = async (prompt: string, image: File, model: string = "gpt=image-2"): Promise<string> => {
+export const editImage = async (prompt: string, image: File, model: string = "nano-banana"): Promise<string> => {
   try {
     // 创建FormData对象用于文件上传
     const formData = new FormData();
     formData.append('model', model);
     formData.append('prompt', prompt);
     formData.append('image', image);
-
+    
     // 发送FormData请求，不设置Content-Type，让浏览器自动设置
     const response = await axios.post(`${API_BASE_URL}/images/edits`, formData, {
       headers: {
@@ -61,7 +61,7 @@ export const editImage = async (prompt: string, image: File, model: string = "gp
         // 不设置Content-Type，让浏览器自动设置正确的Content-Type和boundary
       }
     });
-
+    
     // 假设API返回的结构包含图片URL
     return response.data.data[0].url;
   } catch (error) {
