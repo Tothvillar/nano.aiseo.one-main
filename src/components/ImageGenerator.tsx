@@ -62,7 +62,7 @@ const ImageGenerator: React.FC = () => {
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
     const [uploadedImagePreview, setUploadedImagePreview] = useState<string | null>(null);
     const [aspectRatio, setAspectRatio] = useState('4:3'); // 默认选中第一个选项
-    const [model, setModel] = useState('gpt-image-2-all'); // 默认选择gpt-image-2模型
+    const [model, setModel] = useState('gemini-3.1-flash-image-preview'); // 默认选择nano-banana模型
     const [xKey, setXKey] = useState('');
     const [isValidKey, setIsValidKey] = useState(false);
     const [showHelpTooltip, setShowHelpTooltip] = useState(false);
@@ -408,8 +408,8 @@ const ImageGenerator: React.FC = () => {
                                     onChange={(e) => setModel(e.target.value)}
                                     className="px-2 py-1 text-xs rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-yellow-500"
                                 >
-                                    <option value="gpt-image-2-all">gpt-image-2-all</option>
-                                    <option value="gpt-image-2">gpt-image-2</option>
+                                    <option value="nano-banana">nano-banana</option>
+                                    <option value="nano-banana-hd">nano-banana-hd</option>
                                 </select>
                             </div>
                         </div>
