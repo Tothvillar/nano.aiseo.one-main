@@ -61,7 +61,7 @@ const CaseGenerator: React.FC<CaseGeneratorProps> = ({ title, prompt, desc, orig
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
     const [uploadedImagePreview, setUploadedImagePreview] = useState<string | null>(null);
     const [resultImageUrl, setResultImageUrl] = useState<string | null>(null);
-    const [model, setModel] = useState('nano-banana');
+    const [model, setModel] = useState('gpt-image-2-all');
     const fileInputRef = useRef<HTMLInputElement>(null);
     const dropAreaRef = useRef<HTMLDivElement>(null);
 
@@ -286,8 +286,8 @@ const CaseGenerator: React.FC<CaseGeneratorProps> = ({ title, prompt, desc, orig
                                     onChange={(e) => setModel(e.target.value)}
                                     className="px-2 py-1 text-sm rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-yellow-500"
                                 >
-                                    <option value="nano-banana">gemini-3.1-flash-image-preview</option>
-                                    <option value="nano-banana-hd">gemini-3-pro-image-preview</option>
+                                    <option value="gemini-3-pro-image-preview">gemini-3-pro-image-preview</option>
+                                    <option value="gpt-image-2-all">gpt-image-2-all</option>
                                 </select>
                             </div>
                             <button
